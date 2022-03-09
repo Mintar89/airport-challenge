@@ -2,25 +2,23 @@ require 'airport'
 require 'plane'
 
 describe Airport do
+  let(:plane) { Plane.new }
   
   describe 'land' do
     it 'instructs a plane to land at an airport' do
-      plane = Plane.new
       subject.land(plane)
       expect(subject.hangar).to include plane
     end
   end
 
-  describe 'take off' do
+  describe '#take off' do
     it 'instructs a plane to take off from an airport' do
-      plane = Plane.new
       subject.land(plane)
       subject.take_off(plane)
       expect(subject.hangar).to eq []
     end
 
     it 'confirms that the airplane is no longer in the airport' do
-      plane = Plane.new
       subject.land(plane)
       expect(subject.take_off(plane)).to eq :airborne
     end
