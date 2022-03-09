@@ -9,6 +9,7 @@ class Airport
  
  def land(plane)
    hangar.push(plane)
+   plane.grounded
  end
 
  def take_off(plane)

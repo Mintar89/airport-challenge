@@ -9,6 +9,11 @@ describe Airport do
       subject.land(plane)
       expect(subject.hangar).to include plane
     end
+
+    it 'confirms that the plane is at the airport' do
+      subject.land(plane)
+      expect(subject.land(plane)).to eq :grounded
+    end
   end
 
   describe '#take off' do

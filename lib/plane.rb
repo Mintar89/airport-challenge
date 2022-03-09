@@ -5,7 +5,9 @@ class Plane
     @location = :airborne
   end
 
-  
+  def grounded
+    @location = :grounded
+  end
 
 
 end
