@@ -11,4 +11,13 @@ describe Airport do
     end
   end
 
+  describe 'take off' do
+    it 'instructs a plane to take off from an airport' do
+      plane = Plane.new
+      subject.land(plane)
+      subject.take_off(plane)
+      expect(subject.hangar).to eq []
+    end
+  end
+
 end
