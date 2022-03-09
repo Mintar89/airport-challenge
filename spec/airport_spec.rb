@@ -18,6 +18,12 @@ describe Airport do
       subject.take_off(plane)
       expect(subject.hangar).to eq []
     end
+
+    it 'confirms that the airplane is no longer in the airport' do
+      plane = Plane.new
+      subject.land(plane)
+      expect(subject.take_off(plane)).to eq :airborne
+    end
   end
 
 end
