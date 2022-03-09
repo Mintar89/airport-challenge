@@ -10,6 +10,8 @@ class Airport
  end
  
  def land(plane)
+   fail 'Airport is full' if full?
+   
    hangar.push(plane)
    plane.grounded
  end
@@ -17,6 +19,10 @@ class Airport
  def take_off(plane)
    hangar.delete(plane)
    plane.flying
+ end
+ 
+ def full?
+  hangar.count >= capacity
  end
 
 end 
