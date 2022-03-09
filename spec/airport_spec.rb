@@ -29,4 +29,10 @@ describe Airport do
     end
   end
 
+  describe 'capacity' do
+    it 'shows how many planes can land' do
+      expect(subject.capacity).to eq Airport::DEFAULT_CAPACITY
+    end
+  end
+
 end
