@@ -1,10 +1,14 @@
 require 'airport'
 require 'plane'
 
+
 describe Airport do
   let(:plane) { Plane.new }
+  before do
+    allow_any_instance_of(Weather).to receive(:stormy?) {false}
+  end
   
-  describe 'land' do
+  describe '#land' do
     it 'instructs a plane to land at an airport' do
       subject.land(plane)
       expect(subject.hangar).to include plane
@@ -33,6 +37,11 @@ describe Airport do
       subject.land(plane)
       expect(subject.take_off(plane)).to eq :airborne
     end
+
+   it 'prevents from take off when weather is stormy' do
+      allow_any_instance_of(Weather).to receive(:stormy?) {true}
+      expect { subject.take_off(plane) }.to raise_error 'Too stormy for take-off'
+    end 
   end
 
   describe '#capacity' do
