@@ -23,7 +23,11 @@ describe Airport do
       10.times{ subject.land(plane) }
       expect{ subject.land(plane) }.to raise_error 'Airport is full'
     end  
-
+    
+    it 'prevents landing when weather is stormy' do
+      allow_any_instance_of(Weather).to receive(:stormy?) { true }
+      expect{ subject.land(plane) }.to raise_error 'Too stormy for landing'
+    end
   end
 
   describe '#take off' do

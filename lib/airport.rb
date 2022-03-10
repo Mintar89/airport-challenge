@@ -13,6 +13,7 @@ class Airport
  
  def land(plane)
    fail 'Airport is full' if full?
+   fail 'Too stormy for landing' if @weather.stormy?
    
    hangar.push(plane)
    plane.grounded
