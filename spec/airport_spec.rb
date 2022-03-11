@@ -15,11 +15,11 @@ describe Airport do
     end
 
     it 'confirms that the plane is at the airport' do
-      subject.land(plane)
       expect(subject.land(plane)).to eq :grounded
     end
 
     it 'prevents from landing when airport is full' do
+      allow(Plane).to receive(:grounded) {:false} 
       10.times{ subject.land(plane) }
       expect{ subject.land(plane) }.to raise_error 'Airport is full'
     end  

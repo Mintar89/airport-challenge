@@ -6,10 +6,14 @@ describe Plane do
       expect(subject.flying).to eq :airborne
     end
   end
+
+  it 'cannot land if is in the airport' do
+    subject.grounded
+    expect{ subject.grounded }.to raise_error 'Plane already in the airport'
+  end
   
   describe 'grounded' do
     it 'confirms that the plane is at the airport' do
-      subject.grounded
       expect(subject.grounded).to eq :grounded
     end
   end
