@@ -19,8 +19,7 @@ describe Airport do
     end
 
     it 'prevents from landing when airport is full' do
-      allow(Plane).to receive(:grounded) {:false} 
-      10.times{ subject.land(plane) }
+      10.times{ subject.land(Plane.new) }
       expect{ subject.land(plane) }.to raise_error 'Airport is full'
     end  
     
@@ -46,10 +45,6 @@ describe Airport do
       allow_any_instance_of(Weather).to receive(:stormy?) {true}
       expect { subject.take_off(plane) }.to raise_error 'Too stormy for take-off'
     end 
-
-    it 'cannot take off if is not in the airport' do
-      expect{ subject.take_off(plane) }.to raise_error 'Plane not in airport'
-    end
   end
 
   describe '#capacity' do

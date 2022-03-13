@@ -8,6 +8,8 @@ class Plane
   end
   
   def flying
+    fail 'Plane not in airport' if @location == :airborne
+    
     @location = :airborne 
   end
 
