@@ -64,7 +64,7 @@ _Note: Planes start off in the air - as if they have just entered your airspace 
  => :grounded 
 ```
 
-Airports have a default capacity of 10 aircraft. Give an integer argument to `new` to initialize with a different capacity:
+Airports have a default capacity of 10 aircrafts. Give an integer argument to `new` to initialize with a different capacity:
 
 ```
 3.0.0 :002 > Luton = Airport.new(40)
@@ -83,6 +83,18 @@ After successfully landing and taking off, planes auto-update their location to 
 ```
 
 ## System Guard Conditions
+
+- Land or take off in stormy weather - throws: `Too stormy for landing` & 
+
+```
+3.0.0 :004 > Heathrow.land(Boeing)
+
+Traceback (most recent call last): ...
+RuntimeError (Too stormy for landing)
+```
+![stormy](https://media.giphy.com/media/M9tpu3TPG42n6/giphy.gif)
+
+
 
 ## User Stories
 
