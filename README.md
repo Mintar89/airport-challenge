@@ -63,6 +63,27 @@ _Note: Planes start off in the air - as if they have just entered your airspace 
 3.0.0 :007 > Heathrow.land(Airbus)
  => :grounded 
 ```
+
+Airports have a default capacity of 10 aircraft. Give an integer argument to `new` to initialize with a different capacity:
+
+```
+3.0.0 :002 > Luton = Airport.new(40)
+ => #<Airport:0x0000000159287e90 @hangar=[], @capacity=40, @weather=#<Weather:0x0000000159287e18>> 
+
+```
+
+After successfully landing and taking off, planes auto-update their location to grounded and airborne respectively. 
+
+```
+3.0.0 :005 > Heathrow.land(Boeing)
+ => :grounded 
+
+3.0.0 :006 > Heathrow.take_off(Boeing)
+ => :airborne
+```
+
+## System Guard Conditions
+
 ## User Stories
 
 ```
@@ -98,15 +119,15 @@ I want to prevent landing when weather is stormy
 | Object: | Airport | | | |
 | ------- | ------- | - | - | - |
 | **Attributes:** | Planes | Capacity | Weather |
-| **Methods:** | Land | Take off | Full? | In airport? | 
+| **Methods:** | Land | Take off | Full? | | 
 
 
 2. 
 
-| Object: | Plane | | | |
-| ------- | ----- | - | - | - |
+| Object: | Plane | |
+| ------- | ----- | - | 
 | **Attributes:** | Location |
-| **Methods:** | Land | Take off | Grounded | Flying |
+| **Methods:** | Grounded | Flying |
 
 3. 
 
