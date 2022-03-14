@@ -84,7 +84,7 @@ After successfully landing and taking off, planes auto-update their location to 
 
 ## System Guard Conditions
 
-- Land or take off in stormy weather - throws: `Too stormy for landing` & 
+- Land or take off in stormy weather - shows error message: `Too stormy for landing` & `Too stormy for take-off`
 
 ```
 3.0.0 :004 > Heathrow.land(Boeing)
@@ -93,6 +93,21 @@ Traceback (most recent call last): ...
 RuntimeError (Too stormy for landing)
 ```
 ![stormy](https://media.giphy.com/media/M9tpu3TPG42n6/giphy.gif)
+
+- Land at a full airport - shows error message: `Airport is full`
+
+```
+3.0.0 :002 > Heathrow = Airport.new(1)
+ => #<Airport:0x000000011b815b70 @hangar=[], @capacity=1, @weather=#<Weather:0x000000011b815af8>> 
+3.0.0 :003 > Boeing = Plane.new
+3.0.0 :004 > Airbus = Plane.new
+3.0.0 :007 > Heathrow.land(Boeing)
+ => :grounded 
+3.0.0 :008 > Heathrow.land(Airbus)
+
+Traceback (most recent call last): ...
+RuntimeError (Airport is full)
+```
 
 
 
