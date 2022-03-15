@@ -45,6 +45,13 @@ describe Airport do
       allow_any_instance_of(Weather).to receive(:stormy?) {true}
       expect { subject.take_off(plane) }.to raise_error 'Too stormy for take-off'
     end 
+
+    it 'cannot take off if the plane is not in the airport' do
+      Heathrow = Airport.new
+      Gatwick = Airport.new
+      Heathrow.land(plane)
+      expect{ Gatwick.take_off(plane) }.to raise_error 'Plane not in airport'
+    end 
   end
 
   describe '#capacity' do
