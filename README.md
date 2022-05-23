@@ -109,7 +109,15 @@ Traceback (most recent call last): ...
 RuntimeError (Airport is full)
 ```
 
+- Take off from an airport the plane is not in - shows error message: `Plane not in airport`
 
+```
+3.0.0 :006 > Heathrow.land(Boeing)
+ => :grounded 
+3.0.0 :007 > Luton.take_off(Boeing)
+Traceback (most recent call last): ...
+RuntimeError (Plane not in airport)
+```
 
 ## User Stories
 
